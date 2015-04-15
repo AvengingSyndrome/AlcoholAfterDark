@@ -1,12 +1,35 @@
 User
     ident Text
     password Text Maybe
+    name Text Maybe
+    postcode Text Maybe
     UniqueUser ident
     deriving Typeable
+    deriving Show
 Email
     email Text
     user UserId Maybe
     verkey Text Maybe
     UniqueEmail email
-
+Proposal
+    postTime UTCTime
+    price Double
+    posterUser UserId
+    responderUser UserId Maybe
+    title Text
+    delivery Bool
+    sold Bool
+    description Html
+    sale Bool
+Offer
+    postTime UTCTime
+    price Double
+    user UserId
+    accepted Bool
+    proposal ProposalId
+    desciption Html
+Article 
+    title Text
+    content Html
+    deriving
  -- By default this file is used in Model.hs (which is imported by Foundation.hs)

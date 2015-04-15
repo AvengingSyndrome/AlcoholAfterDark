@@ -1,0 +1,9 @@
+<h1> Offers
+$if null offers
+    <p> There are no offers in the blog
+$else
+    <ul>
+        $forall Entity articleId offers <- offers
+            <li>
+                <a href=@{OfferR offerId} > #{offerTitle article}
+<hr>

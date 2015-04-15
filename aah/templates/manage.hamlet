@@ -1,0 +1,4 @@
+<form method=post enctype=#{enctype}>
+    ^{profileWidget}
+    <div>
+        <input type=submit value="Update Profile">

@@ -1,0 +1,5 @@
+<h1> #{proposalTitle sale}
+<article> #{proposalDescription sale}
+<hr>
+<a href=@{AlcoholSellsR}>
+    Go to sell list.

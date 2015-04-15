@@ -1,0 +1,9 @@
+$if sale  
+ <h1> Post a Sale 
+$else 
+ <h1> Post a Buy  
+<form method=post enctype=#{enctype}>
+  ^{saleWidget}
+  <div>
+      <input type=submit value="Post New Article">
+

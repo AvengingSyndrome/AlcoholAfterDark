@@ -5,10 +5,13 @@ import Database.Persist.Sql (ConnectionPool, runSqlPool)
 import Text.Hamlet          (hamletFile)
 import Text.Jasmine         (minifym)
 import Yesod.Auth.BrowserId (authBrowserId)
+import Yesod.Auth.GoogleEmail
 import Yesod.Default.Util   (addStaticContentExternal)
 import Yesod.Core.Types     (Logger)
 import qualified Yesod.Core.Unsafe as Unsafe
-
+import Data.Text
+import Yesod.Form.Nic (YesodNic, nicHtmlField)
+instance YesodNic App
 -- | The foundation datatype for your application. This can be a good place to
 -- keep settings and values requiring initialization before your application
 -- starts running, such as database connections. Every handler will have
@@ -128,10 +131,12 @@ instance YesodAuth App where
             Nothing -> Just <$> insert User
                 { userIdent = credsIdent creds
                 , userPassword = Nothing
+                , userName = Nothing
+                , userPostcode = Nothing
                 }
 
     -- You can add other plugins like BrowserID, email or OAuth here
-    authPlugins _ = [authBrowserId def]
+    authPlugins _ = [authBrowserId def,authGoogleEmail]
 
     authHttpManager = getHttpManager
 

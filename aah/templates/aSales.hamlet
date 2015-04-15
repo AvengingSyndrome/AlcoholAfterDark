@@ -1,0 +1,10 @@
+<h1> Selling 
+$if null sells
+    <p> There are no sells currently
+$else
+    <ul>
+        $forall Entity proposalId sale <- sells
+            <li>
+                <a href=@{SellR proposalId} > #{proposalTitle sale}
+<hr>
+

@@ -3,7 +3,7 @@ module Handler.Home where
 import Import
 import Yesod.Form.Bootstrap3 (BootstrapFormLayout (..), renderBootstrap3,
                               withSmallInput)
-
+import AahCommon
 -- This is a handler function for the GET request method on the HomeR
 -- resource pattern. All of your resource patterns are defined in
 -- config/routes
@@ -13,6 +13,9 @@ import Yesod.Form.Bootstrap3 (BootstrapFormLayout (..), renderBootstrap3,
 -- inclined, or create a single monolithic file.
 getHomeR :: Handler Html
 getHomeR = do
+    u  <- maybeAuth 
+    let maid = getUser u
+    --runDB $ update x [UserName =. Just (pack "Andrew")]
     (formWidget, formEnctype) <- generateFormPost sampleForm
     let submission = Nothing :: Maybe (FileInfo, Text)
         handlerName = "getHomeR" :: Text
@@ -23,6 +26,10 @@ getHomeR = do
 
 postHomeR :: Handler Html
 postHomeR = do
+    maid' <- maybeAuth
+    let maid = case maid' of
+                Just (Entity _ user) -> Just user
+                Nothing -> Nothing
     ((result, formWidget), formEnctype) <- runFormPost sampleForm
     let handlerName = "postHomeR" :: Text
         submission = case result of

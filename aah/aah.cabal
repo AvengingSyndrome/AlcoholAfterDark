@@ -18,10 +18,18 @@ library
                      Import
                      Import.NoFoundation
                      Model
+                     AahCommon
                      Settings
                      Settings.StaticFiles
                      Handler.Common
                      Handler.Home
+                     Handler.Echo
+                     Handler.Mirror
+                     Handler.Blog
+                     Handler.Article
+                     Handler.Manage
+                     Handler.AlcoholSells
+                     Handler.Sell
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT
