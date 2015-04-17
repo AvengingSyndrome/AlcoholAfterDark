@@ -1,0 +1,6 @@
+<h1>Post Offer
+<form method=post enctype=#{enctype}>
+  ^{offerWidget}
+  <div>
+      <input type=submit value="Post New Offer">
+<hr>

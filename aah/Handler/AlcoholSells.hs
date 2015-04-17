@@ -10,7 +10,7 @@ postAlcoholSellsR :: Handler Html
 postAlcoholSellsR = do
     u <- requireAuthId
     let sale = True
-    ((res,saleWidget),enctype) <- runFormPost $  writeSale u True 
+    ((res,saleWidget),enctype) <- runFormPost $  writeSale u sale 
     case res of
          FormSuccess sell -> do
             _ <- runDB $ insert sell

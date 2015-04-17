@@ -30,6 +30,7 @@ library
                      Handler.Manage
                      Handler.AlcoholSells
                      Handler.Sell
+                     Handler.Offer
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT

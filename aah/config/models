@@ -21,13 +21,18 @@ Proposal
     sold Bool
     description Html
     sale Bool
+Comment
+    postTime UTCTime
+    user UserId
+    offer OfferId
+    description Html
 Offer
     postTime UTCTime
     price Double
     user UserId
     accepted Bool
     proposal ProposalId
-    desciption Html
+    description Html
 Article 
     title Text
     content Html

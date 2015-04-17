@@ -1,0 +1,6 @@
+<h1>Post Comment
+<form method=post enctype=#{enctype}>
+  ^{commentWidget}
+  <div>
+      <input type=submit value="Post New Comment">
+<hr>

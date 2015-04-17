@@ -12,3 +12,4 @@
 manage ManageR GET POST
 alcohol/sells AlcoholSellsR GET POST
 sell/#ProposalId SellR GET POST
+/offer/#OfferId OfferR GET POST
