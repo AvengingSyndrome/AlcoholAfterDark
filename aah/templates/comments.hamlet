@@ -1,10 +1,10 @@
 <h1> Comments
--- $if null offers
---     <p> There are no offers yet
--- $else
---     <ul>
--- 	$forall Entity offerId offer <- offers
--- 	    <li>
--- 		<a href=@{OfferR offerId} > #{offerPrice offer}
--- <hr>
--- 
+$if null comments
+     <p> There are no comments yet
+$else
+    <ul>
+       $forall Entity _ comment <- comments
+          <hr>
+          #{commentDescription comment}
+<hr>
+ 
