@@ -2,6 +2,8 @@ module AahCommon where
 import Import
 import Yesod.Form.Nic (nicHtmlField)
 
+data AcceptOffer = AcceptOffer (Key Proposal) (Key Offer)
+
 getUser :: Maybe (Entity a) -> Maybe a
 getUser (Just (Entity _ u)) = Just u
 getUser Nothing = Nothing
@@ -32,3 +34,7 @@ getSales sale = do
                       $(widgetFile "aSales")
      Nothing -> do defaultLayout $ do 
                     $(widgetFile "aSales")
+acceptOffer :: Key Proposal -> Key Offer -> Form AcceptOffer
+acceptOffer pid oid = renderDivs $ AcceptOffer
+    <$> pure pid
+    <*> pure oid

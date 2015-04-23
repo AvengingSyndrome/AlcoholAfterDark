@@ -2,7 +2,7 @@ module Handler.Offer where
 
 import Import
 import Yesod.Form.Nic (nicHtmlField)
-
+import AahCommon
 getOfferR :: OfferId -> Handler Html
 getOfferR offerId = do
     offer <- runDB $ get404 offerId
@@ -13,15 +13,18 @@ getOfferR offerId = do
     case authid of 
         Just aid -> do
           (commentWidget, enctype) <- generateFormPost $ makeCommentForm aid offerId
+          (offerAcceptWidget, oawEnctype) <- generateFormPost $ acceptOffer (offerProposal offer) offerId 
           defaultLayout $ do
              setTitle $ toHtml $ proposalTitle proposal
              $(widgetFile "sale")
              $(widgetFile "offer")
              $(widgetFile "comments")
-             if (aid == offerUser offer || aid == proposalPosterUser proposal) 
+             if (aid == offerUser offer ||  aid == proposalPosterUser proposal) 
                 then $(widgetFile "commentform")
                 else mempty
-             
+             if (aid == proposalPosterUser proposal) 
+                then $(widgetFile "acceptOffer")
+                else mempty 
         Nothing -> 
          defaultLayout $ do
              setTitle $ toHtml $ proposalTitle sale
